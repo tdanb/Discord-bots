@@ -3,6 +3,7 @@ This repo contains the different kinds of discord bots I have created. These bot
 
 
 Join my discord server 😉: https://discord.gg/XvrBVpuc
+
 dicordpy docs: https://discordpy.readthedocs.io/en/rewrite/migrating.html#sending-messages
 
 
