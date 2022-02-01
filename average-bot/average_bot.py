@@ -1,5 +1,5 @@
 #client id: 937985946698264596
-#token: OTM3OTg1OTQ2Njk4MjY0NTk2.YfjtfA.jUbW_-RxG1B95svbEeFNK6Pkjcg
+#token: [omitted]
 # 67176512
 
 #https://discord.com/oauth2/authorize?client_id=937985946698264596&scope=bot&permissions=67176512
@@ -98,4 +98,4 @@ async def on_message(message):
         await client.close()
 
 client.loop.create_task(member_report_background())
-client.run("OTM3OTg1OTQ2Njk4MjY0NTk2.YfjtfA.jUbW_-RxG1B95svbEeFNK6Pkjcg")
+client.run("[token]")
