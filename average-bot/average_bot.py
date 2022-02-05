@@ -8,6 +8,7 @@
 import discord
 import time
 import asyncio
+from discord.ext import commands
 #imports to create member report
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -15,51 +16,6 @@ from matplotlib import style
 style.use("fivethirtyeight")
 
 client = discord.Client()
-
-# gathering data from the server on online, offline and idle members
-def member_report (guild):
-    online = 0
-    offline = 0
-    idle = 0
-
-    for i in guild:
-        if str(i.status) == "online":
-            online += 1
-        elif str(i.status) == "offline":
-            offline += 1
-        else:
-            idle += 1
-    return online, offline, idle
-
-# continously gathering data from the status of server members in the background
-async def member_report_background():
-    await client.wait_until_ready()
-    guild = client.get_guild(937958472903983124)
-
-    # loop to gather member status
-    while not client.is_closed():
-        try:
-            online, offline, idle = member_report(guild)
-            with open("memberReport.csv","a") as f:
-                f.write(f"{int(time.time())},{online},{offline},{idle}\n")
-
-                df = pd.read_csv("memberReport.csv",names=['time','online','offline','idle'])
-                df['date'] = pd.to_datetime(df['time'],unit='s')
-                df['total']=df['online']+df['offline']+df['idle']
-                df.drop("time",1,inplace=True)
-                df.set_index("date",inplace=True)
-
-                df.plot()
-                plt.clf()
-                plt.legend()
-                plt.savefig("status.png")
-            # interval member status is recorded
-            await asyncio.sleep(5)
-
-        except Exception() as e:
-            print(str(e))
-            await asyncio.sleep(5)
-
 
 @client.event 
 # establishing user at login
@@ -83,19 +39,27 @@ async def on_message(message):
     elif "see you again" in message.content.lower():
         await message.channel.send("I'm so glad you're back!")
     elif "!intro" in message.content.lower():
-        await message.channel.send("I'm your average discord bot 😉")
-
-    # create member report 
-    elif "!status report" in message.content.lower():
-        online, offline, idle = member_report(guild)
-
-        await message.channel.send(f"```py\nOnline:{online}.\nIdle/busy/dnd:{idle}.\nOffline:{offline}```")
-        file = discord.File("status.png",filename="status.png")
-        await message.channel.send("status.png", file=file)
+        await message.channel.send("I'm your average discord bot 😉 and welcome to the server!")
+    elif "thank" in message.content.lower():
+        await message.channel.send("No problem! 😁")
 
     # logout
     elif "!logout" == message.content.lower():
         await client.close()
 
-client.loop.create_task(member_report_background())
-client.run("[token]")
+    # motivational picture 
+    elif "hard" in message.content.lower():
+        file = discord.File("average-bot/images/catMotivation.png", filename="average-bot/images/catMotivation.png")
+        await message.channel.send("Here is a motivational cat poster to help 🙂", file=file)
+
+    # displaying a cat photo
+    elif "cat" in message.content.lower():
+        file = discord.File("average-bot/images/cat.jpg", filename="average-bot/images/cat.jpg")
+        await message.channel.send("🐱", file=file)
+
+    # display a gif
+    elif "animal" in message.content.lower():
+        file = discord.File("average-bot/images/cute.gif", filename="average-bot/images/cute.gif")
+        await message.channel.send("", file=file)
+
+client.run("OTM3OTg1OTQ2Njk4MjY0NTk2.YfjtfA.smBGZhBeCuFmq16ypwfSnx8eQxA")

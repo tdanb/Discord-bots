@@ -4,6 +4,8 @@ I've recently become interested in automation and decided to learn how to make d
 
 Below you can find a brief description of the functionality of each discord bot:
 
+
+
 Join my discord server 😉: https://discord.gg/XvrBVpuc
 
 
@@ -11,7 +13,11 @@ This link is for future reference and outlines all the functions discord bots ca
 
 dicordpy docs: https://discordpy.readthedocs.io/en/rewrite/migrating.html#sending-messages
 
+
+
 ### Average discord bot
 
 
-### Covid information discord bot
+
+
+### Covid informational discord bot
