@@ -62,4 +62,4 @@ async def on_message(message):
         file = discord.File("average-bot/images/cute.gif", filename="average-bot/images/cute.gif")
         await message.channel.send("", file=file)
 
-client.run("OTM3OTg1OTQ2Njk4MjY0NTk2.YfjtfA.smBGZhBeCuFmq16ypwfSnx8eQxA")
+client.run("[token]")
