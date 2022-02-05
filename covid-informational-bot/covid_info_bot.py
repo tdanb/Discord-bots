@@ -53,9 +53,8 @@ async def on_message(message):
     elif "!symptom" in message.content.lower():
         await message.channel.send("https://www.canada.ca/en/public-health/services/diseases/2019-novel-coronavirus-infection/symptoms.html")
 
-
     # logout
     elif "!logout" == message.content.lower():
         await client.close()
 
-client.run("[token omitted]")
+client.run("[token]")
