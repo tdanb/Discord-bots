@@ -25,6 +25,7 @@ The functionality includes:
     - output of the total number of members in the server
     - sending images
     - sending gifs
+    - image manipulation
 
 
 ### Covid informational discord bot
